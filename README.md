@@ -1,4 +1,4 @@
-# K3 Op Een Rij
+# K3-Op-Een-Rij
 
 - [Go to the nicely rendered website](https://richelbilderbeek.github.io/k3_op_een_rij/).
 

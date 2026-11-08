@@ -1,5 +1,10 @@
 # K3-Op-Een-Rij FAQ
 
+## How do you spell the name of this game
+
+'K3-Op-Een-Rij', i.e. all capitals and dashes between the words.
+The repository uses `k3_op_een_rij`.
+
 ## Who are these images?
 
 Image                                       |Name
