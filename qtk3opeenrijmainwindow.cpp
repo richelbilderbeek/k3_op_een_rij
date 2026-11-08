@@ -196,8 +196,8 @@ QWidget * ribi::koer::QtK3OpEenRijMainWindow::CreateAboutPage()
   QLabel * const about = CreateTextLabel(
     "K3-thema drie-op-een-rij spel<br/>"
     "door Richèl Bilderbeek, 2007-2026<br/>"
-    "<a href=\"https://github.com/richelbilderbeek/k3_op_een_rij\">"
-    "github.com/richelbilderbeek/k3_op_een_rij</a><br/>"
+    "<a href=\"http://richelbilderbeek.github.io/k3_op_een_rij/\">"
+    "http://richelbilderbeek.github.io/k3_op_een_rij/</a><br/>"
     "Met dank aan Mark Wiering voor zijn uitstekende bug reports",
     Qt::AlignCenter
   );
