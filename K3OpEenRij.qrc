@@ -1,17 +1,12 @@
 <RCC>
     <qresource prefix="/images">
-        <file>K3OpEenRijBackground.png</file>
-        <file>K3OpEenRijBackgroundColored.png</file>
-        <file>K3OpEenRijBackgroundGrey.png</file>
         <file>K3OpEenRijComputer1.png</file>
         <file>K3OpEenRijComputer2.png</file>
         <file>K3OpEenRijComputer3.png</file>
         <file>K3OpEenRijComputerGrey.png</file>
-        <file>K3OpEenRijEmpty.png</file>
         <file>K3OpEenRijInstructions1.png</file>
         <file>K3OpEenRijInstructions2.png</file>
         <file>K3OpEenRijInstructions3.png</file>
-        <file>K3OpEenRij.css</file>
         <file>K3OpEenRijJosje.png</file>
         <file>K3OpEenRijJosjeGrey.png</file>
         <file>K3OpEenRijKaren.png</file>
@@ -29,7 +24,6 @@
         <file>K3OpEenRijKlaasje.png</file>
         <file>K3OpEenRijMarthe.png</file>
         <file>K3OpEenRijMartheGrey.png</file>
-        <file>K3OpEenRijIcon.ico</file>
         <file>K3OpEenRijEmpty2.png</file>
         <file>K3OpEenRijDavid.png</file>
         <file>K3OpEenRijDavidGrey.png</file>

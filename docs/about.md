@@ -1,10 +1,10 @@
 # About
 
-K3-Op-Een-Rij is programmed in C++14 using the STL,
-[Boost](http://www.boost.org), [Qt](http://www.qt.io)
-(for the desktop version) and [Wt](http://www.webtoolkit.eu/wt)
-(for the website version) libraries.
+K3-Op-Een-Rij is programmed in C++17 using the [Qt](https://www.qt.io) library.
 
-K3-Op-Een-Rij is cross-compiled using [MXE](http://mxe.cc)
-in the bash shell scripts.
+The web version is the same program,
+compiled to WebAssembly using
+[Qt for WebAssembly](https://doc.qt.io/qt-6/wasm.html).
 
+The game logic originates from
+[ConnectThree](https://github.com/richelbilderbeek/ConnectThree).

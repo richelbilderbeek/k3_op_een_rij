@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 
-std::vector<ribi::koer::BlackHairedGirl> GetBlackHairedGirls() noexcept
+std::vector<ribi::koer::BlackHairedGirl> ribi::koer::GetBlackHairedGirls() noexcept
 {
   return
   {

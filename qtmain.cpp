@@ -1,28 +1,23 @@
-
+#include <cstdlib>
+#include <ctime>
 
 #include <QApplication>
 #include <QIcon>
-#include <QFile>
-#include <QPixmap>
-#include <cassert>
-#include "qtk3opeenrijresources.h"
-#include "qtk3opeenrijmenudialog.h"
 
+#include "qtk3opeenrijmainwindow.h"
+#include "qtk3opeenrijresources.h"
 
 int main(int argc, char *argv[])
 {
+  std::srand(static_cast<unsigned int>(std::time(nullptr)));
   QApplication a(argc, argv);
+  a.setWindowIcon(QIcon(ribi::koer::QtK3OpEenRijResources::GetIconFilename()));
 
-  const ribi::koer::QtK3OpEenRijResources resources;
-  ribi::koer::QtK3OpEenRijMenuDialog w(resources);
-
-  {
-    const std::string icon_filename = resources.GetIconFilename();
-    assert(QFile::exists(icon_filename.c_str()));
-    qApp->setWindowIcon(QIcon(QPixmap(icon_filename.c_str())));
-    w.setWindowIcon(QIcon(QPixmap(icon_filename.c_str())));
-  }
-
+  ribi::koer::QtK3OpEenRijMainWindow w;
+#ifdef Q_OS_WASM
+  w.showFullScreen();
+#else
   w.show();
+#endif
   return a.exec();
 }
