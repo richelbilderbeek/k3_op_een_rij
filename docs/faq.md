@@ -4,7 +4,7 @@
 
 Image                                       |Name
 --------------------------------------------|---------------------
-![David](K3OpEenRijDavid.png)               | David 
+![David](K3OpEenRijDavid.png)               | David
 ![Hanne Verbruggen](K3OpEenRijHanne.png)    | Hanne Verbruggen
 ![Josje Huisman](K3OpEenRijJosje.png)       | Josje Huisman
 ![Karen Damen](K3OpEenRijKaren.png)         | Karen Damen
@@ -13,7 +13,7 @@ Image                                       |Name
 ![Kristel Verbeke](K3OpEenRijKristel.png)   | Kristel Verbeke
 ![Matt](K3OpEenRijMatt.png)                 | Matt
 ![Marthe De Pillecyn](K3OpEenRijMarthe.png) | Marthe De Pillecyn
-![Tyler](K3OpEenRijTyler.png)               | Tyler 
+![Tyler](K3OpEenRijTyler.png)               | Tyler
 
 ## Why the male images?
 
