@@ -1,5 +1,6 @@
 #include "qtk3opeenrijboardwidget.h"
 
+#include <algorithm>
 #include <cassert>
 
 #include <QMouseEvent>
@@ -23,7 +24,8 @@ ribi::koer::QtK3OpEenRijBoardWidget::QtK3OpEenRijBoardWidget(
     },
     m_empty(QtK3OpEenRijResources::GetEmptyFilename())
 {
-  setFixedSize(n_cols * sprite_size, n_rows * sprite_size);
+  //The board scales to the space available
+  setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   setCursor(Qt::PointingHandCursor);
 }
 
@@ -46,9 +48,10 @@ void ribi::koer::QtK3OpEenRijBoardWidget::mousePressEvent(QMouseEvent * e)
   if (IsComputerTurn()) return;
   if (m_game.GetWinner() != con3::Winner::no_winner) return;
 
-  const QPoint pos = e->position().toPoint();
-  const int x = pos.x() / sprite_size;
-  const int y = pos.y() / sprite_size;
+  const QPoint pos = e->position().toPoint() - GetTopLeft();
+  if (pos.x() < 0 || pos.y() < 0) return;
+  const int x = pos.x() / GetSquareSize();
+  const int y = pos.y() / GetSquareSize();
   if (!m_game.CanDoMove(x, y)) return;
 
   m_game.DoMove(x, y);
@@ -59,15 +62,51 @@ void ribi::koer::QtK3OpEenRijBoardWidget::mousePressEvent(QMouseEvent * e)
 void ribi::koer::QtK3OpEenRijBoardWidget::paintEvent(QPaintEvent *)
 {
   QPainter painter(this);
+  painter.setRenderHint(QPainter::SmoothPixmapTransform);
+  const int size = GetSquareSize();
+  const QPoint top_left = GetTopLeft();
   const int n_rows = m_game.GetRows();
   const int n_cols = m_game.GetCols();
   for (int y = 0; y != n_rows; ++y)
   {
     for (int x = 0; x != n_cols; ++x)
     {
-      painter.drawPixmap(x * sprite_size, y * sprite_size, GetPixmap(m_game.GetSquare(x, y)));
+      painter.drawPixmap(
+        QRect(top_left + QPoint(x * size, y * size), QSize(size, size)),
+        GetPixmap(m_game.GetSquare(x, y))
+      );
     }
   }
+}
+
+int ribi::koer::QtK3OpEenRijBoardWidget::GetSquareSize() const noexcept
+{
+  return std::max(1, std::min(width() / m_game.GetCols(), height() / m_game.GetRows()));
+}
+
+QPoint ribi::koer::QtK3OpEenRijBoardWidget::GetSquareCenter(const int x, const int y) const noexcept
+{
+  const int size = GetSquareSize();
+  return GetTopLeft() + QPoint(x * size + size / 2, y * size + size / 2);
+}
+
+QPoint ribi::koer::QtK3OpEenRijBoardWidget::GetTopLeft() const noexcept
+{
+  const int size = GetSquareSize();
+  return QPoint(
+    (width() - size * m_game.GetCols()) / 2,
+    (height() - size * m_game.GetRows()) / 2
+  );
+}
+
+QSize ribi::koer::QtK3OpEenRijBoardWidget::minimumSizeHint() const
+{
+  return QSize(m_game.GetCols() * 10, m_game.GetRows() * 10);
+}
+
+QSize ribi::koer::QtK3OpEenRijBoardWidget::sizeHint() const
+{
+  return QSize(m_game.GetCols() * sprite_size, m_game.GetRows() * sprite_size);
 }
 
 const QPixmap& ribi::koer::QtK3OpEenRijBoardWidget::GetPixmap(

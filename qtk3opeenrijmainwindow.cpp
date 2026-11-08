@@ -219,7 +219,7 @@ QWidget * ribi::koer::QtK3OpEenRijMainWindow::CreateGamePage()
   QWidget * const content = new QWidget;
   QVBoxLayout * const layout = new QVBoxLayout(content);
   m_board_holder = new QVBoxLayout;
-  layout->addLayout(m_board_holder);
+  layout->addLayout(m_board_holder, 1); //The board gets all space left
 
   QHBoxLayout * const bottom = new QHBoxLayout;
   for (QLabel *& label: m_player_labels)
@@ -233,7 +233,8 @@ QWidget * ribi::koer::QtK3OpEenRijMainWindow::CreateGamePage()
   connect(button_quit, &QPushButton::clicked, this, &QtK3OpEenRijMainWindow::StopGame);
   bottom->addWidget(button_quit);
   layout->addLayout(bottom);
-  return Centered(content);
+  //Not centered: the board grows to fill the screen
+  return content;
 }
 
 QWidget * ribi::koer::QtK3OpEenRijMainWindow::CreateWinnerPage()
@@ -341,7 +342,7 @@ void ribi::koer::QtK3OpEenRijMainWindow::StartGame()
     false, m_select->GetBlack(), m_select->GetBlond(), m_select->GetRed());
   m_board = new QtK3OpEenRijBoardWidget(
     m_player_filenames, m_select->GetIsPlayerHuman(), n_cols, n_rows);
-  m_board_holder->addWidget(m_board);
+  m_board_holder->addWidget(m_board, 1);
   connect(m_board, &QtK3OpEenRijBoardWidget::moveDone, this, &QtK3OpEenRijMainWindow::OnMoveDone);
   ShowPage(m_game_page);
   OnMoveDone(); //Show whose turn it is, start computer move if needed

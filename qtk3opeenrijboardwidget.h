@@ -31,7 +31,14 @@ public:
   const con3::Game& GetGame() const noexcept { return m_game; }
   bool IsComputerTurn() const noexcept;
 
+  ///The preferred size of a square, in pixels
   static constexpr int sprite_size{50};
+
+  ///The center of square (x, y), in widget coordinates
+  QPoint GetSquareCenter(const int x, const int y) const noexcept;
+
+  QSize minimumSizeHint() const override;
+  QSize sizeHint() const override;
 
 signals:
   ///Emitted after every valid move, by human or computer
@@ -48,6 +55,12 @@ private:
   const QPixmap m_empty;
 
   const QPixmap& GetPixmap(const con3::Square square) const noexcept;
+
+  ///The size of a square, so that the board fits the widget
+  int GetSquareSize() const noexcept;
+
+  ///The top-left of the board, which is centered in the widget
+  QPoint GetTopLeft() const noexcept;
 };
 
 } //~namespace koer
