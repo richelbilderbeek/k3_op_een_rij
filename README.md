@@ -2,8 +2,12 @@
 
 - [Go to the nicely rendered website](https://richelbilderbeek.github.io/k3_op_een_rij/).
 
-The game is built by continuous integration into the folder `docs/game`,
-which is not part of this repository.
+The game is written in C++ using Qt6.
+See [docs/build.md](docs/build.md) how to build it,
+for the desktop and for the web.
+
+The web version of the game is built by continuous integration
+into the folder `docs/game`, which is not part of this repository.
 
 ## Files used by continuous integration scripts
 

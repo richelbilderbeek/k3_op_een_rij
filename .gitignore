@@ -39,3 +39,12 @@ object_script*
 *_resource.rc
 .qmake.stash
 K3OpEenRij.zip
+build/
+build_*/
+docs/game/
+site/
+qrc_*.cpp
+moc_*
+*.moc
+wordlist.dic
+.cache/

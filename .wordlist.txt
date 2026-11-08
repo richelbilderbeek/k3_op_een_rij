@@ -74,3 +74,10 @@ Tetralith
 matplotlib
 seaborn
 NAISS
+Zensical
+een
+rij
+html
+localhost
+md
+toc

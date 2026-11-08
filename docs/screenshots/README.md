@@ -2,6 +2,9 @@
 
 The most recent screenshots are at the top.
 
+![K3-Op-Een-Rij menu of version 9.0](K3OpEenRijMenu_9_0.png)
+![K3-Op-Een-Rij game version 9.0](K3OpEenRij_9_0.png)
+
 ![K3-Op-Een-Rij menu of version 8.0](K3OpEenRijMenu_8_0.png)
 ![K3-Op-Een-Rij game version 8.0](K3OpEenRij_8_0.png)
 
