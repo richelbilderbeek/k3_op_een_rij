@@ -2,18 +2,18 @@
 
 ## Who are these images?
 
-Image|Name
----|---
-![](K3OpEenRijDavid.png) | David 
-![](K3OpEenRijHanne.png) | Hanne Verbruggen
-![](K3OpEenRijJosje.png) | Josje Huisman
-![](K3OpEenRijKaren.png) | Karen Damen
-![](K3OpEenRijKathleen.png) | Kathleen Aerts
-![](K3OpEenRijKlaasje.png) | Klaasje Meijer
-![](K3OpEenRijKristel.png) | Kristel Verbeke
-![](K3OpEenRijMatt.png) | Matt
-![](K3OpEenRijMarthe.png) | Marthe De Pillecyn
-![](K3OpEenRijTyler.png) | Tyler 
+Image                                       |Name
+--------------------------------------------|---------------------
+![David](K3OpEenRijDavid.png)               | David 
+![Hanne Verbruggen](K3OpEenRijHanne.png)    | Hanne Verbruggen
+![Josje Huisman](K3OpEenRijJosje.png)       | Josje Huisman
+![Karen Damen](K3OpEenRijKaren.png)         | Karen Damen
+![Kathleen Aerts](K3OpEenRijKathleen.png)   | Kathleen Aerts
+![Klaasje Meijer](K3OpEenRijKlaasje.png)    | Klaasje Meijer
+![Kristel Verbeke](K3OpEenRijKristel.png)   | Kristel Verbeke
+![Matt](K3OpEenRijMatt.png)                 | Matt
+![Marthe De Pillecyn](K3OpEenRijMarthe.png) | Marthe De Pillecyn
+![Tyler](K3OpEenRijTyler.png)               | Tyler 
 
 ## Why the male images?
 

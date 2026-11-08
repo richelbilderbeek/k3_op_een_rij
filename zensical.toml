@@ -6,14 +6,15 @@ edit_uri = "blob/main/docs/"
 
 nav = [
   { "Start" = "README.md"},
+  "screenshots/README.md",
   "faq.md",
-  "play.md"
+  "play.md",
 ]
 
 [project.theme]
 # https://zensical.org/docs/setup/basics/?h=theme#theme-variant
 variant = "classic"
-palette.primary = "orange"
+palette.primary = "pink"
 
 favicon = "k3_op_een_rij_icon.png"
 logo = "k3_op_een_rij_icon.png"
