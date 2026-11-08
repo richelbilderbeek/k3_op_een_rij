@@ -104,12 +104,16 @@ private slots:
     koer::QtK3OpEenRijSelectPlayerWidget * const select
       = w.findChild<koer::QtK3OpEenRijSelectPlayerWidget *>();
     QVERIFY(select);
+    //The current band is the initial choice
+    QCOMPARE(select->GetRed(), koer::RedHairedGirl::hanne);
+    QCOMPARE(select->GetBlack(), koer::BlackHairedGirl::marthe);
+    QCOMPARE(select->GetBlond(), koer::BlondeGirl::julia);
     QTest::mouseClick(select, Qt::LeftButton, {}, QPoint(75, 75)); //Black: computer
     QTest::mouseClick(select, Qt::LeftButton, {}, QPoint(75, 125)); //Blond: computer
     QTest::mouseClick(select, Qt::LeftButton, {}, QPoint(25, 25)); //Red: next girl
     QCOMPARE(select->GetIsPlayerHuman(), std::bitset<3>(0b001));
     QCOMPARE(select->GetRed(), koer::RedHairedGirl::tyler);
-    QCOMPARE(select->GetBlond(), koer::BlondeGirl::kathleen);
+    QCOMPARE(select->GetBlond(), koer::BlondeGirl::julia);
     Screenshot(w, "menu_selected");
 
     QTest::mouseClick(FindButton(w, "&Begin spel"), Qt::LeftButton);
