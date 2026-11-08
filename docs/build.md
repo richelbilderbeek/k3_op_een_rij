@@ -31,7 +31,7 @@ make
 
 The web version uses [Qt for WebAssembly](https://doc.qt.io/qt-6/wasm.html),
 which needs a matching version of [Emscripten](https://emscripten.org).
-See [the build workflow](https://github.com/richelbilderbeek/k3_op_een_rij/blob/main/.github/workflows/build.yaml)
+See the build workflow, `.github/workflows/build.yaml`,
 for the versions used.
 
 ```bash
@@ -42,7 +42,7 @@ make
 python3 -m http.server
 ```
 
-Then open <http://localhost:8000/k3_op_een_rij.html> in a web browser.
+Then open `http://localhost:8000/k3_op_een_rij.html` in a web browser.
 
 ## Continuous integration
 
