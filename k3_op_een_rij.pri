@@ -2,6 +2,10 @@
 
 INCLUDEPATH += $$PWD
 
+# Qt for WebAssembly has exceptions disabled: a throw aborts the program.
+# Disable them everywhere, so a throw fails to compile instead
+CONFIG += exceptions_off
+
 SOURCES += \
   $$PWD/connectthreegame.cpp \
   $$PWD/connectthreeplayer.cpp \

@@ -3,6 +3,7 @@
 
 #include <bitset>
 #include <iosfwd>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -43,7 +44,7 @@ struct Game
   void Restart() noexcept;
 
   ///SuggestMove suggests a good move.
-  ///If the game is a draw, it will throw a logic error
+  ///Only call this when there is no winner yet
   Move SuggestMove(const std::bitset<3>& is_player_human) const;
 
 private:
@@ -53,11 +54,11 @@ private:
   Player m_player;
 
   bool CanDoMove(const Move& p) const noexcept;
-  Move CheckOneOther(const std::bitset<3>& is_player_human) const;
-  Move CheckTwoDiagonally() const;
-  Move CheckTwoHorizontalOwn() const;
-  Move CheckTwoOther(const std::bitset<3>& is_player_human) const;
-  Move CheckTwoVerticalOwn() const;
+  std::optional<Move> CheckOneOther(const std::bitset<3>& is_player_human) const;
+  std::optional<Move> CheckTwoDiagonally() const;
+  std::optional<Move> CheckTwoHorizontalOwn() const;
+  std::optional<Move> CheckTwoOther(const std::bitset<3>& is_player_human) const;
+  std::optional<Move> CheckTwoVerticalOwn() const;
 
   ///Returns all possible moves
   std::vector<Move> GetAllPossibleMoves() const noexcept;
@@ -69,8 +70,8 @@ private:
   bool IsDraw() const noexcept;
   bool IsPlayerHuman(const Player player, const std::bitset<3>& is_player_human) const noexcept;
 
-  ///Throws std::logic_error if there is no move left
-  Move MakeRandomMove() const;
+  ///Returns nothing if there is no move left
+  std::optional<Move> MakeRandomMove() const;
   Square PlayerToSquare(const Player player) const noexcept;
   Player SquareToPlayer(const Square square) const noexcept;
   Winner SquareToWinner(const Square square) const noexcept;

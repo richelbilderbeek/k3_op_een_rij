@@ -6,7 +6,6 @@
 #include <cassert>
 #include <cstdlib>
 #include <iterator>
-#include <stdexcept>
 #include <iostream>
 
 #include "connectthreemove.h"
@@ -122,40 +121,26 @@ ribi::con3::Move ribi::con3::Game::SuggestMove(
   const std::bitset<3>& is_player_human
 ) const
 {
-  try {
-    const auto m = CheckTwoHorizontalOwn();
-    if (CanDoMove(m)) return m;
+  //No exceptions are used to signal 'no move found':
+  //the WebAssembly version has exceptions disabled,
+  //where a throw would abort the program
+  const std::optional<Move> moves[] = {
+    CheckTwoHorizontalOwn(),
+    CheckTwoVerticalOwn(),
+    CheckTwoOther(is_player_human),
+    CheckTwoDiagonally(),
+    CheckOneOther(is_player_human)
+  };
+  for (const auto& m: moves)
+  {
+    if (m && CanDoMove(*m)) return *m;
   }
-  catch (std::logic_error&) { /* OK */ }
-
-  try {
-    const auto m = CheckTwoVerticalOwn();
-    if (CanDoMove(m)) return m;
-  }
-  catch (std::logic_error&) { /* OK */ }
-
-  try {
-    const auto m = CheckTwoOther(is_player_human);
-    if (CanDoMove(m)) return m;
-  }
-  catch (std::logic_error&) { /* OK */ }
-
-  try {
-    const auto m = CheckTwoDiagonally();
-    if (CanDoMove(m)) return m;
-  }
-  catch (std::logic_error&) { /* OK */ }
-
-  try {
-    const auto m = CheckOneOther(is_player_human);
-    if (CanDoMove(m)) return m;
-  }
-  catch (std::logic_error&) { /* OK */ }
-
-  return MakeRandomMove();
+  const auto m = MakeRandomMove();
+  assert(m && "SuggestMove must not be called when the board is full");
+  return *m;
 }
 
-ribi::con3::Move ribi::con3::Game::CheckTwoHorizontalOwn() const
+std::optional<ribi::con3::Move> ribi::con3::Game::CheckTwoHorizontalOwn() const
 {
   const int n_rows = GetRows();
   for (int y=0; y!=n_rows; ++y)
@@ -194,10 +179,10 @@ ribi::con3::Move ribi::con3::Game::CheckTwoHorizontalOwn() const
       }
     }
   }
-  throw std::logic_error("no move");
+  return std::nullopt;
 }
 
-ribi::con3::Move ribi::con3::Game::CheckTwoVerticalOwn() const
+std::optional<ribi::con3::Move> ribi::con3::Game::CheckTwoVerticalOwn() const
 {
   const int n_rows = GetRows();
   assert(n_rows > 1);
@@ -241,17 +226,17 @@ ribi::con3::Move ribi::con3::Game::CheckTwoVerticalOwn() const
       }
     }
   }
-  throw std::logic_error("no move");
+  return std::nullopt;
 }
 
-ribi::con3::Move ribi::con3::Game::CheckTwoOther(const std::bitset<3>& is_player_human) const
+std::optional<ribi::con3::Move> ribi::con3::Game::CheckTwoOther(const std::bitset<3>& is_player_human) const
 {
   const auto moves(GetAllPossibleMoves());
 
   const int nMoves = moves.size();
   if (nMoves==0)
   {
-    throw std::logic_error("no move");
+    return std::nullopt;
   }
 
   {
@@ -391,7 +376,7 @@ std::vector<ribi::con3::Move>
   return v;
 }
 
-ribi::con3::Move ribi::con3::Game::CheckTwoDiagonally() const
+std::optional<ribi::con3::Move> ribi::con3::Game::CheckTwoDiagonally() const
 {
   std::vector<Move> v;
 
@@ -420,14 +405,14 @@ ribi::con3::Move ribi::con3::Game::CheckTwoDiagonally() const
   }
   if (v.empty())
   {
-    throw std::logic_error("no move");
+    return std::nullopt;
   }
   const auto m = v[std::rand() % v.size()];
   assert(CanDoMove(m));
   return m;
 }
 
-ribi::con3::Move ribi::con3::Game::CheckOneOther(const std::bitset<3>& is_player_human) const
+std::optional<ribi::con3::Move> ribi::con3::Game::CheckOneOther(const std::bitset<3>& is_player_human) const
 {
   std::vector<Move> v;
 
@@ -478,7 +463,7 @@ ribi::con3::Move ribi::con3::Game::CheckOneOther(const std::bitset<3>& is_player
   }
   if (v.empty())
   {
-    throw std::logic_error("no move");
+    return std::nullopt;
   }
 
   {
@@ -526,7 +511,7 @@ ribi::con3::Move ribi::con3::Game::CheckOneOther(const std::bitset<3>& is_player
   }
 }
 
-ribi::con3::Move ribi::con3::Game::MakeRandomMove() const
+std::optional<ribi::con3::Move> ribi::con3::Game::MakeRandomMove() const
 {
   std::vector<Move> v;
   const int n_cols = GetCols();
@@ -546,7 +531,7 @@ ribi::con3::Move ribi::con3::Game::MakeRandomMove() const
   }
   if (v.empty())
   {
-    throw std::logic_error("no move");
+    return std::nullopt;
   }
   const int index = std::rand() % v.size();
   return v[index];
