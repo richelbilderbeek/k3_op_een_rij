@@ -5,6 +5,7 @@
 #include "connectthreegame.h"
 #include "qtk3opeenrijboardwidget.h"
 #include "qtk3opeenrijmainwindow.h"
+#include "qtk3opeenrijresources.h"
 #include "qtk3opeenrijselectplayerwidget.h"
 
 using namespace ribi;
@@ -45,6 +46,23 @@ private slots:
         QVERIFY(n_moves <= 15 * 8);
       }
     }
+  }
+
+  void blondes_cycle_via_julia()
+  {
+    using koer::BlondeGirl;
+    QCOMPARE(koer::GetNext(BlondeGirl::klaasje), BlondeGirl::julia);
+    QCOMPARE(koer::GetNext(BlondeGirl::julia), BlondeGirl::matt);
+    QCOMPARE(koer::ToStr(BlondeGirl::julia), std::string("Julia"));
+    //All blondes have their pictures
+    BlondeGirl girl = BlondeGirl::kathleen;
+    for (int i = 0; i != 5; ++i)
+    {
+      QVERIFY(!QPixmap(koer::QtK3OpEenRijResources::GetPlayerFilename(true, girl)).isNull());
+      QVERIFY(!QPixmap(koer::QtK3OpEenRijResources::GetPlayerFilename(false, girl)).isNull());
+      girl = koer::GetNext(girl);
+    }
+    QCOMPARE(girl, BlondeGirl::kathleen);
   }
 
   void three_in_a_row_wins()
@@ -91,6 +109,7 @@ private slots:
     QTest::mouseClick(select, Qt::LeftButton, {}, QPoint(25, 25)); //Red: next girl
     QCOMPARE(select->GetIsPlayerHuman(), std::bitset<3>(0b001));
     QCOMPARE(select->GetRed(), koer::RedHairedGirl::tyler);
+    QCOMPARE(select->GetBlond(), koer::BlondeGirl::julia);
     Screenshot(w, "menu_selected");
 
     QTest::mouseClick(FindButton(w, "&Begin spel"), Qt::LeftButton);
