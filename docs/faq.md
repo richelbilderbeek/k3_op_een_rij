@@ -1,4 +1,4 @@
-# K3-Op-Een-Rij FAQ
+# FAQ
 
 ## How do you spell the name of this game
 

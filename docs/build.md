@@ -1,4 +1,4 @@
-# Building K3 Op Een Rij
+# Building
 
 K3 Op Een Rij uses Qt6 and has no other dependencies.
 
