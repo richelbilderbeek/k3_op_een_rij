@@ -96,7 +96,7 @@ jobs:
           cp build/*.svg dist/ || true
       - name: Smoke test in a browser
         run: |
-          pip install playwright
+          pip install playwright pillow
           (cd dist && python3 -m http.server 8000) &
           sleep 2
           python3 .github/smoke_test.py
