@@ -1,13 +1,14 @@
 # Building
 
 K3 Op Een Rij uses Qt6 and has no other dependencies.
+The desktop version plays music, using Qt Multimedia.
 
 ## Desktop
 
 On a terminal, do:
 
 ```bash
-sudo apt-get install qt6-base-dev
+sudo apt-get install qt6-base-dev qt6-multimedia-dev gstreamer1.0-libav
 git clone https://github.com/richelbilderbeek/k3_op_een_rij.git
 cd k3_op_een_rij
 mkdir build

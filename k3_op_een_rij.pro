@@ -25,4 +25,10 @@ include(k3_op_een_rij.pri)
 
 SOURCES += qtmain.cpp
 
+# Music is for the desktop version only: the web version is silent
+!wasm {
+  QT += multimedia
+  RESOURCES += k3_op_een_rij_music.qrc
+}
+
 win32: RC_ICONS = K3OpEenRijIcon.ico
