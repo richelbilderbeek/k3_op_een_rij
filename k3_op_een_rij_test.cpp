@@ -109,7 +109,7 @@ private slots:
     QTest::mouseClick(select, Qt::LeftButton, {}, QPoint(25, 25)); //Red: next girl
     QCOMPARE(select->GetIsPlayerHuman(), std::bitset<3>(0b001));
     QCOMPARE(select->GetRed(), koer::RedHairedGirl::tyler);
-    QCOMPARE(select->GetBlond(), koer::BlondeGirl::julia);
+    QCOMPARE(select->GetBlond(), koer::BlondeGirl::kathleen);
     Screenshot(w, "menu_selected");
 
     QTest::mouseClick(FindButton(w, "&Begin spel"), Qt::LeftButton);
