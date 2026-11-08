@@ -97,11 +97,24 @@ private slots:
     koer::QtK3OpEenRijBoardWidget * board = w.findChild<koer::QtK3OpEenRijBoardWidget *>();
     QVERIFY(board);
     QVERIFY(!board->IsComputerTurn());
-    QTest::mouseClick(board, Qt::LeftButton, {}, QPoint(25, 25));
+    QTest::mouseClick(board, Qt::LeftButton, {}, board->GetSquareCenter(0, 0));
     QCOMPARE(board->GetGame().GetSquare(0, 0), con3::Square::player1);
     //The two computers move
     QTRY_VERIFY_WITH_TIMEOUT(!board->IsComputerTurn(), 2000);
     Screenshot(w, "game");
+
+    //The board scales to the window size, e.g. a small web page
+    for (const QSize& size: { QSize(360, 234), QSize(976, 635), QSize(800, 520) })
+    {
+      w.resize(size);
+      QTest::qWait(50);
+      QVERIFY(board->x() + board->GetSquareCenter(14, 7).x() < w.width());
+      QVERIFY(board->y() + board->GetSquareCenter(14, 7).y() < w.height());
+      Screenshot(w, QString("game_%1x%2").arg(size.width()).arg(size.height()));
+    }
+    QTest::mouseClick(board, Qt::LeftButton, {}, board->GetSquareCenter(14, 7));
+    QCOMPARE(board->GetGame().GetSquare(14, 7), con3::Square::player1);
+    QTRY_VERIFY_WITH_TIMEOUT(!board->IsComputerTurn(), 2000);
 
     //Stop, then let the computers play a whole game
     QTest::mouseClick(FindButton(w, "&Stoppen"), Qt::LeftButton);
