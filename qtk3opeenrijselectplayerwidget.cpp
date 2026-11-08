@@ -10,7 +10,7 @@ ribi::koer::QtK3OpEenRijSelectPlayerWidget::QtK3OpEenRijSelectPlayerWidget(
   QWidget *parent)
   : QWidget(parent),
     m_black{BlackHairedGirl::marthe},
-    m_blond{BlondeGirl::klaasje},
+    m_blond{BlondeGirl::kathleen},
     m_red{RedHairedGirl::hanne},
     m_is_player_human{0b111}
 {

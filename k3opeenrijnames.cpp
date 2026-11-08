@@ -34,7 +34,8 @@ ribi::koer::BlondeGirl ribi::koer::GetNext(const BlondeGirl girl) noexcept
   {
     case BlondeGirl::kathleen: return BlondeGirl::josje;
     case BlondeGirl::josje: return BlondeGirl::klaasje;
-    case BlondeGirl::klaasje: return BlondeGirl::matt;
+    case BlondeGirl::klaasje: return BlondeGirl::julia;
+    case BlondeGirl::julia: return BlondeGirl::matt;
     case BlondeGirl::matt: return BlondeGirl::kathleen;
   }
   assert(!"Should not get here");
@@ -70,6 +71,7 @@ std::string ribi::koer::ToStr(const BlondeGirl girl) noexcept
     case BlondeGirl::kathleen: return "Kathleen";
     case BlondeGirl::josje: return "Josje";
     case BlondeGirl::klaasje: return "Klaasje";
+    case BlondeGirl::julia: return "Julia";
     case BlondeGirl::matt: return "Matt";
   }
   assert(!"Should not get here");

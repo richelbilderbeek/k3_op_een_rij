@@ -17,7 +17,7 @@ enum class BlackHairedGirl
 };
 
 std::vector<BlackHairedGirl> GetBlackHairedGirls() noexcept;
-enum class BlondeGirl { kathleen, josje, klaasje, matt };
+enum class BlondeGirl { kathleen, josje, klaasje, julia, matt };
 enum class RedHairedGirl { karen, hanne, tyler };
 
 BlackHairedGirl GetNext(const BlackHairedGirl girl) noexcept;

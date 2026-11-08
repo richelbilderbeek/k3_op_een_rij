@@ -255,7 +255,7 @@ QWidget * ribi::koer::QtK3OpEenRijMainWindow::CreateWinnerPage()
 
 QString ribi::koer::QtK3OpEenRijMainWindow::GetVersion()
 {
-  return "10.0";
+  return "10.1";
 }
 
 QStringList ribi::koer::QtK3OpEenRijMainWindow::GetVersionHistory()
@@ -270,7 +270,8 @@ QStringList ribi::koer::QtK3OpEenRijMainWindow::GetVersionHistory()
     "2014-01-30: version 6.2: added extra command line option to display the artists",
     "2015-06-09: version 6.3: show how to choose Kathleen in the menu screen, clean up files when program closes",
     "2015-11-14: version 7.0: moved to own GitHub, added pictures of new K3",
-    "2026-11-08: version 10.0: port to Qt6, added WebAssembly version, no external dependencies"
+    "2026-11-08: version 10.0: port to Qt6, added WebAssembly version, no external dependencies",
+    "2026-11-08: version 10.1: added Julia"
   };
 }
 

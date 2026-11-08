@@ -12,6 +12,7 @@ Image                                       |Name
 ![David](K3OpEenRijDavid.png)               | David
 ![Hanne Verbruggen](K3OpEenRijHanne.png)    | Hanne Verbruggen
 ![Josje Huisman](K3OpEenRijJosje.png)       | Josje Huisman
+![Julia Boschman](K3OpEenRijJulia.png)      | Julia Boschman
 ![Karen Damen](K3OpEenRijKaren.png)         | Karen Damen
 ![Kathleen Aerts](K3OpEenRijKathleen.png)   | Kathleen Aerts
 ![Klaasje Meijer](K3OpEenRijKlaasje.png)    | Klaasje Meijer
