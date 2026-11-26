@@ -1,5 +1,7 @@
 # K3-Op-Een-Rij
 
+[![codecov](https://codecov.io/gh/richelbilderbeek/k3_op_een_rij/branch/main/graph/badge.svg)](https://codecov.io/gh/richelbilderbeek/k3_op_een_rij)
+
 - [Go to the nicely rendered website](https://richelbilderbeek.github.io/k3_op_een_rij/).
 
 The game is written in C++ using Qt6.
